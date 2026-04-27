@@ -3,7 +3,10 @@ import { Button, ScrollView, StyleSheet, Text, TextInput } from 'react-native';
 import { StudentSchema } from '../../schema/studentSchema';
 
 export default function Entry() {
-  // 1. Form State
+  
+    // const { addStudent } = useStudents();
+  
+    // Form State
   const [formData, setFormData] = useState({
     id: '',
     name: '',
@@ -34,7 +37,12 @@ export default function Entry() {
       return;
     }
 
-    console.log("Validation Passed!", result.data);
+    if (result.success) {
+       addStudent(result.data); 
+       alert("Student Added Successfully!");
+    }
+
+    //console.log("Validation Passed!", result.data);
     // save result.data to global list next...
   };
 
